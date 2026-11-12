@@ -57,7 +57,7 @@ O toolkit gera a estrutura inicial do código no repositório atual e abre uma c
 2. Na nova conversa, confirme que ela muda para **AIAgentExpert**. Substitua o prompt gerado pelo prompt personalizado e envie-o:
 
    ```text
-   /foundrytk-quick-start Create a backer concierge AI agent called 'Backer Concierge'. The agent should use the model I deployed to answer catalog questions and recommend games grounded strictly in db/catalog.json. Review the acceptance criteria in the issue titled 'Add a Backer Concierge assistant for catalog questions' and ensure the agent meets them. Generate the code into agent/backer-concierge in the current workspace and ask me if anything is unclear.
+   /foundrytk-quick-start Crie um agente de IA de atendimento a apoiadores chamado 'Backer Concierge'. O agente deve usar o modelo que implantei para responder a perguntas sobre o catálogo e recomendar jogos com base exclusivamente em db/catalog.json. Revise os critérios de aceitação da issue intitulada 'Add a Backer Concierge assistant for catalog questions' e confirme que o agente os atende. Gere o código em agent/backer-concierge no workspace atual e pergunte se algo não estiver claro.
    ```
 
 3. Revise o código gerado em `agent/backer-concierge`. Confirme que o catálogo está incluído no agente a ser implantado, que os testes específicos passam e que nenhuma credencial ou arquivo de ambiente local será incluído nos commits.
@@ -74,7 +74,7 @@ A transferência **Go production** empacota o agente existente para o Foundry. E
 1. Na conversa de criação de agente do Copilot Chat, selecione **Go production**, substitua o prompt padrão pelo seguinte e envie-o:
 
    ```text
-   /foundrytk-quick-start Review this agent for deployment readiness, run its tests, then deploy it to my existing tailspin-toys Foundry project. Show me the deployment status and test the deployed agent.
+   /foundrytk-quick-start Revise este agente para confirmar que está pronto para implantação, execute os testes e implante-o no meu projeto tailspin-toys existente no Foundry. Mostre o status da implantação e teste o agente implantado.
    ```
 
    ![Captura de tela mostrando as opções de transferência do agente AIAgentExpert.](../../../../_images/vscode-go-production-handoff.png)

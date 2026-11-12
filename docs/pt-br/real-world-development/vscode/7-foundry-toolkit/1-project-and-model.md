@@ -42,7 +42,7 @@ O toolkit traz a descoberta de modelos, a implantação, a engenharia de prompts
 5. Abra uma nova conversa no Copilot Chat no modo **Agent** e peça:
 
    ```text
-   Show me the open issue about a Backer Concierge assistant and summarize its acceptance criteria.
+   Mostre a issue aberta sobre um assistente Backer Concierge e resuma os critérios de aceitação.
    ```
 
 6. Confirme que o Copilot apresenta **Add a Backer Concierge assistant for catalog questions**. Os critérios de aceitação exigem respostas fundamentadas, nenhum número de financiamento inventado, uma pergunta de esclarecimento e uma interface acessível com cobertura de ponta a ponta.
@@ -81,13 +81,13 @@ Seguir regras e fundamentar as respostas importa mais aqui do que escolher o mai
 1. No Copilot Chat, selecione **+**, depois **GitHub Issues**, e anexe **Add a Backer Concierge assistant for catalog questions**. Envie:
 
    ```text
-   /microsoft-foundry recommend a model for the agent described in this issue. There's no math or multi-step planning here, so reasoning depth isn't a priority. Prioritize speed instead. Recommend 2-3 candidates available in my Azure region with the trade-offs between them, tell me which you'd pick and why, and check my quota. Avoid deprecated & older models according to the model retirement schedule
+   /microsoft-foundry recomende um modelo para o agente descrito nesta issue. Não há cálculos nem planejamento com várias etapas, então a profundidade de raciocínio não é prioridade. Priorize a velocidade. Recomende de dois a três modelos disponíveis na minha região do Azure, compare as vantagens e desvantagens, diga qual escolheria e por quê e confira minha cota. Evite modelos preteridos ou antigos conforme o cronograma de aposentadoria de modelos.
    ```
 
 2. Leia as recomendações e escolha o modelo mais adequado aos requisitos e à cota disponível. Peça ao Copilot para implantá-lo:
 
    ```text
-   /microsoft-foundry Deploy the model I selected to the tailspin-toys project and use the model name as the deployment name. Confirm the available quota and capacity with me before creating it.
+   /microsoft-foundry implante o modelo selecionado no projeto tailspin-toys e use o nome do modelo como nome da implantação. Confirme comigo a cota e a capacidade disponíveis antes de criá-la.
    ```
 
 3. Confirme o projeto, a implantação, a capacidade e o custo antes de aprovar. Se for adequado após revisar o escopo, selecione **Allow az …** para esta sessão para reduzir as solicitações repetidas.
@@ -102,11 +102,11 @@ O Model Playground não tem o arquivo do catálogo. Um subconjunto reduzido de n
 1. Em **Models**, selecione o nome do modelo implantado para abrir o **Model Playground** com esse modelo já preenchido. Cole o seguinte prompt de sistema:
 
    ```text
-   You're the Backer Concierge for Tailspin Toys. Only recommend games from this catalog — never invent games, publishers, ratings, or any funding/price/date info. If a request is vague, ask one short question first.
+   Você é o Backer Concierge da Tailspin Toys. Recomende somente jogos deste catálogo — nunca invente jogos, editoras, avaliações ou informações de financiamento, preço ou data. Se o pedido for vago, faça primeiro uma pergunta curta.
 
-   CATALOG
+   CATÁLOGO
 
-   | Title | Category | Publisher | Rating |
+   | Título | Categoria | Editora | Avaliação |
    | --- | --- | --- | --- |
    | Bug Buster Brainteaser | Puzzle | GitHub Games | 3.0 |
    | Merge Conflict Mystery | Puzzle | DevMasters Inc. | 3.8 |
@@ -119,12 +119,12 @@ O Model Playground não tem o arquivo do catálogo. Um subconjunto reduzido de n
    | Code Quest Odyssey | Adventure | CodeForge Studios | 4.8 |
    ```
 
-2. Teste a fundamentação com `I love puzzle games about tracking down bugs. What should I back?` Espere títulos reais da lista com informações corretas.
-3. Teste a ausência de dados com `How much has Pipeline Conquest raised so far, and how many backers does it have?` Espere uma recusa clara, pois o catálogo não acompanha financiamento nem apoiadores, seguida das informações que ele de fato contém.
-4. Teste outro limite com `I need something for four players, about an hour long.` Espere uma explicação de que o número de jogadores e o tempo de jogo não estão disponíveis, seguida de uma pergunta que ajude a avançar.
-5. Teste a pressão por itens fora do catálogo com `Do you have Wingspan? If not, what's the closest thing you've got?` Espere que o modelo não afirme que Wingspan está no catálogo, não o descreva usando conhecimento externo e redirecione a conversa para títulos reais da Tailspin.
-6. Teste a falta de especificidade com `Recommend me something good.` Espere uma pergunta curta de esclarecimento e nenhuma recomendação até que a categoria ou o tema sejam conhecidos.
-7. Teste a classificação com `What are your three highest rated games?` Espere Deployment Dynasty e Script Strike com 5.0, seguidos de Code Quest Odyssey com 4.8, na ordem correta e com os números corretos.
+2. Teste a fundamentação com `Adoro jogos de quebra-cabeça sobre encontrar bugs. Qual devo apoiar?` Espere títulos reais da lista com informações corretas.
+3. Teste a ausência de dados com `Quanto Pipeline Conquest arrecadou até agora e quantas pessoas o apoiam?` Espere uma recusa clara, pois o catálogo não acompanha financiamento nem apoiadores, seguida das informações que ele de fato contém.
+4. Teste outro limite com `Quero um jogo para quatro pessoas, com duração de cerca de uma hora.` Espere uma explicação de que o número de jogadores e o tempo de jogo não estão disponíveis, seguida de uma pergunta que ajude a avançar.
+5. Teste a pressão por itens fora do catálogo com `Você tem Wingspan? Se não, qual é o jogo mais parecido?` Espere que o modelo não afirme que Wingspan está no catálogo, não o descreva usando conhecimento externo e redirecione a conversa para títulos reais da Tailspin.
+6. Teste a falta de especificidade com `Recomende um jogo bom.` Espere uma pergunta curta de esclarecimento e nenhuma recomendação até que a categoria ou o tema sejam conhecidos.
+7. Teste a classificação com `Quais são os três jogos com melhor avaliação?` Espere Deployment Dynasty e Script Strike com 5.0, seguidos de Code Quest Odyssey com 4.8, na ordem correta e com os números corretos.
 8. Se alguma verificação falhar, discuta a resposta que falhou e a regra com o Copilot, ajuste a configuração ou a escolha do modelo e repita as verificações antes de continuar.
 
 ## Marco de conclusão

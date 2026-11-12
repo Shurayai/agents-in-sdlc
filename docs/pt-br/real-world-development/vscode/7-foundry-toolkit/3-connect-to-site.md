@@ -34,22 +34,22 @@ O agente hospedado existente é o destino da integração. A Tailspin Toys é um
 Um proxy local do Azure Functions em `/api` armazena os detalhes de conexão e encaminha as solicitações enquanto o site é executado localmente. O Copilot pode usar **Azure skills** para prepará-lo e validá-lo.
 
 > [!IMPORTANT]
-> Este proxy do workshop é apenas para desenvolvimento local. Não o implante como um endpoint público anônimo. A produção exige autenticação específica da aplicação e controles contra abuso, incluindo limites de taxa ou cotas, restrições de CORS, monitoramento e controles de custo.
+> Este proxy do workshop é apenas para desenvolvimento local. Não o implante como um endpoint público sem autenticação. A produção exige autenticação específica da aplicação e controles contra abuso, incluindo limites de taxa ou cotas, restrições de compartilhamento de recursos entre origens (CORS), monitoramento e controles de custo.
 
 1. Peça ao Copilot para criar o proxy:
 
    ```text
-   Add a local Azure Functions proxy in api for the static Astro site to call my deployed Backer Concierge securely during development. Use my existing local Azure sign-in to call the hosted agent, keep all credentials out of the browser, protect conversation state with opaque handles, validate requests, sanitize errors, add focused tests, and configure the Astro dev server so /api requests reach the local Function. Don't create public deployment infrastructure.
+   Adicione em api um proxy local do Azure Functions para que o site estático Astro chame com segurança o Backer Concierge implantado durante o desenvolvimento. Use meu login local existente no Azure para chamar o agente hospedado, mantenha todas as credenciais fora do navegador, proteja o estado da conversa com identificadores opacos, valide as solicitações, higienize os erros, adicione testes específicos e configure o servidor de desenvolvimento Astro para encaminhar as solicitações /api à função local. Não crie infraestrutura de implantação pública.
    ```
 
 2. Revise as alterações antes de aceitá-las. Confirme que as credenciais e os identificadores de conversa do Foundry permanecem no servidor, que as configurações locais estão excluídas do controle de versão, que as solicitações têm limites e que os testes específicos passam.
 3. Comprove que o backend funciona antes de criar a interface:
 
    ```text
-   Start the local Functions host and test /api/concierge by asking "Which games are under $30?" Show me the sanitized response and confirm that no credentials or internal conversation identifiers are returned.
+   Inicie o host local do Functions e teste /api/concierge perguntando "Quais jogos custam menos de US$ 30?". Mostre a resposta higienizada e confirme que nenhuma credencial ou identificador interno de conversa é retornado.
    ```
 
-4. Verifique a resposta no terminal. Espere um JSON válido com uma propriedade `response` contendo a resposta, sem informações de preço inventadas e sem credenciais ou identificadores internos de conversa. Se uma verificação falhar, peça ao Copilot para corrigi-la e repita o teste do backend.
+4. Verifique a resposta no terminal. Espere um objeto válido em JavaScript Object Notation (JSON) com uma propriedade `response` contendo a resposta, sem informações de preço inventadas e sem credenciais ou identificadores internos de conversa. Se uma verificação falhar, peça ao Copilot para corrigi-la e repita o teste do backend.
 5. Selecione **Keep** para manter as alterações e use **/clear** para começar uma nova conversa para o widget no mesmo repositório e na mesma branch. Mantenha a configuração do proxy local e a conexão com o agente hospedado existente.
 
 ## Criar e testar o widget
@@ -59,7 +59,7 @@ A interface agora tem um backend verificado. Os testes de ponta a ponta verifica
 1. Peça ao Copilot para adicionar o widget:
 
    ```text
-   Add an accessible Backer Concierge chat widget to the Astro site. Connect it to /api/concierge, preserve the conversation using the returned opaque handle, follow the existing design guidance, support keyboard use, and make it testable.
+   Adicione ao site Astro um widget acessível de chat do Backer Concierge. Conecte-o a /api/concierge, mantenha a conversa usando o identificador opaco retornado, siga as orientações de design existentes, ofereça suporte ao teclado e permita a realização de testes.
    ```
 
    ![Captura de tela mostrando o widget de chat Backer Concierge em ação](../../../../_images/tailspin-toys-backer-concierge-agent.png)
@@ -67,7 +67,7 @@ A interface agora tem um backend verificado. Os testes de ponta a ponta verifica
 2. Mantenha a função e o site em execução e verifique a experiência completa:
 
    ```text
-   Use Playwright MCP to test the Backer Concierge widget end to end. Verify the core chat flow, conversation continuity, keyboard and accessibility behavior, grounding boundaries, and safe use of the local proxy. Report the results and fix any failures.
+   Use o servidor Model Context Protocol (MCP) do Playwright para testar o widget Backer Concierge de ponta a ponta. Verifique o fluxo principal do chat, a continuidade da conversa, o comportamento com teclado e de acessibilidade, os limites de fundamentação e o uso seguro do proxy local. Informe os resultados e corrija as falhas.
    ```
 
 3. Revise os resultados dos testes e as alterações em relação aos critérios de aceitação da issue: respostas fundamentadas, nenhum número de financiamento inventado, uma pergunta de esclarecimento, interface acessível e cobertura de ponta a ponta. Confirme que as falhas foram corrigidas e que as verificações afetadas foram executadas novamente.
